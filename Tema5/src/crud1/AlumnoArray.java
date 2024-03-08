@@ -2,59 +2,70 @@ package crud1;
 
 public class AlumnoArray {
 
-	public String Alumno[] alumnos = new String[30];
-	
-	public static void Listado() {
+	public static Alumno[] alumnos = new Alumno[30];
+
+	public static void listado() {
 		int i = 0;
-		while(i<alumnos.lenght && alumnos[i]!=null) {
+		while (i < alumnos.length && alumnos[i] != null) {
 			System.out.println(alumnos[i]);
 			i++;
 		}
 	}
-	
-	public static boolean Nuevo(String nombre,double nota ) {
-		boolean nuevo =true;
-		int i = 0;
-		while(i<alumnos.lenght && alumnos[i]!=null) {
-			i++;
-		}
-		
-		if(i<alumnos.lenght) {
-			alumnos[i]=nombre, nota;
-		}else {
-			nuevo=false;
+
+	public static boolean nuevo(String nombre, double nota) {
+		boolean nuevo = true;
+		int pos = 0;
+		int i =0;
+		pos = encuentraAlumno(nombre);
+
+		if (pos == -1) {
+			while(i<alumnos.length && alumnos[i]!=null) {
+				i++;
+			}
+			alumnos[i] = new Alumno(nombre, nota);
+
+		} else {
+			nuevo = false;
 		}
 		return nuevo;
 	}
-	
-	
-	public static boolean Modificar(String nombre,double nota ) {
-		int i = 0;
+
+	public static boolean modificar(String nombre, double nota) {
+		int pos = 0;
 		boolean modifica = true;
-		while(i<alumnos.lenght && alumnos[i]!=null|| alumnos[i].equals(nombre)) {
-			i++;
-		}
-		
-		if(i<alumnos.lenght) {
-			alumnos[i]=nota;
-		}else {
-			modifica=false;
+
+		pos = encuentraAlumno(nombre);
+
+		if (pos >= 0) {
+			alumnos[pos].setNotaMedia(nota);
+		} else {
+			modifica = false;
 		}
 		return modifica;
 	}
-	
-	public static boolean Borrar(String nombre,double nota ) {
-		int i = 0;
+
+	public static boolean borrar(String nombre) {
+		int pos = 0;
 		boolean borrar = true;
-		while(i<alumnos.lenght && alumnos[i]!=null|| alumnos[i].equals(nombre)) {
-			i++;
-		}
-		
-		if(i<alumnos.lenght) {
-			alumnos[i]=null;
-		}else {
-			borrar=false;
+
+		pos = encuentraAlumno(nombre);
+
+		if (pos >= 0) {
+			alumnos[pos] = null;
+		} else {
+			borrar = false;
 		}
 		return borrar;
+	}
+
+	private static int encuentraAlumno(String nombre) {
+		int pos = 0;
+		while (pos < alumnos.length && (alumnos[pos] == null || !alumnos[pos].getNombre().equals(nombre))) {
+			pos++;
+		}
+		if (pos == alumnos.length) {
+			pos = -1;
+		}
+		return pos;
 	}
 }

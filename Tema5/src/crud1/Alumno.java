@@ -19,17 +19,11 @@ public class Alumno {
 	}
 
 	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		if (nombre != null && !nombre.equals("")) {
-			this.nombre = nombre;
-		}
+		return this.nombre;
 	}
 
 	public double getNotaMedia() {
-		return notaMedia;
+		return this.notaMedia;
 	}
 
 	public void setNotaMedia(double notaMedia) {
@@ -40,7 +34,7 @@ public class Alumno {
 
 	@Override
 	public String toString() {
-		return "Alumno [nombre=" + nombre + ", notaMedia=" + notaMedia + "]";
+		return nombre + " : " + notaMedia ;
 	}
 
 }

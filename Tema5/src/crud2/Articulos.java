@@ -1,10 +1,8 @@
 package crud2;
 
-import java.util.Objects;
-
 public class Articulos {
 	private int codigo;
-	private String descripcion;
+	private String descripcion ="";
 	private double precioCompra;
 	private double precioVenta;
 	private int Stock;
@@ -27,6 +25,19 @@ public class Articulos {
 			Stock = stock;
 		}
 	}
+
+
+
+
+	public Articulos(int codigo) {
+		super();
+		if (codigo > 0) {
+			this.codigo = codigo;
+		}
+	}
+
+
+
 
 	public int getCodigo() {
 		return codigo;
@@ -75,11 +86,11 @@ public class Articulos {
 	@Override
 	public String toString() {
 		String cadena = "------------------------------\n";
-		cadena += "Gestisimal\n Código=" + codigo;
-		cadena += "\n Descripción=" + descripcion;
-		cadena += "\n Precio de la compra=" + precioCompra;
-		cadena += "\n Precio de la venta=" + precioVenta;
-		cadena += "\n Stock=" + Stock;
+		cadena += "Gestisimal\n Código=" + this.codigo;
+		cadena += "\n Descripción=" + this.descripcion;
+		cadena += "\n Precio de la compra=" + this.precioCompra;
+		cadena += "\n Precio de la venta=" + this.precioVenta;
+		cadena += "\n Stock=" + this.Stock;
 		return cadena;
 	}
 
@@ -95,5 +106,5 @@ public class Articulos {
 
 		return igual;
 	}
-	
+
 }

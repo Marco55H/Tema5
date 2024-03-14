@@ -2,6 +2,8 @@ package crud1;
 
 import java.util.Scanner;
 
+import crud2.Gestisimal;
+
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -28,11 +30,11 @@ public class Main {
 
 				if (AlumnoArray.nuevo(nombre, nota)) {
 					System.out.println("Se añadió");
-					AlumnoArray.nuevo(nombre, nota);
 				} else {
 					System.out.println("No se añadió");
 				}
 
+				
 				break;
 			case 3:
 
